@@ -1,4 +1,3 @@
-
 <?php
     $page = (isset($_GET['page']) && !empty($_GET['page']) ? $_GET['page'] : '');
     $file = "";
