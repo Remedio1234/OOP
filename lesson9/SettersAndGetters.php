@@ -1,4 +1,6 @@
 <?php
+    //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
+    // https://www.phptutorial.net/php-oop/
     class SettersAndGetters {
         public $student_name; //properties
         public $num1;
