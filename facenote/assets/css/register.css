@@ -1,3 +1,10 @@
 .txt-register-color {
     color:green !important;
 }
+.error {
+    color: red !important;
+    /* border: 1px solid red; */
+}
+#frmSubmit input.error {
+    border: 1px solid red;
+}

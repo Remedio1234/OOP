@@ -1,4 +1,6 @@
 <?php
+    /* database connection */
+    require_once('config/Database.php');
     /**
      * get page variable to view page 
      * */
@@ -15,6 +17,7 @@
                     'assets/css/navbar-top-fixed.css'
                 );
     $global_js  = array(
+                    'assets/js/jquery-3.6.0.min.js',
                     'assets/js/bootstrap.bundle.min.js'
     );
 
@@ -49,7 +52,7 @@
                 'title' => 'Register',
                 'page'  => 'register'
             ];
-            $local_js   = ['assets/js/register.js'];       
+            $local_js   = ['assets/js/jquery.validate.min.js', 'assets/js/register.js'];       
             $local_css  = ['assets/css/signin.css','assets/css/register.css'];
             $file = 'pages/register.php';
         break;
@@ -80,4 +83,5 @@
     * call template / content (inside header and footer file)
     */
    include "templates/content.php"
+   //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
 ?>
