@@ -91,5 +91,5 @@
     * call template / content (inside header and footer file)
     */
    include "templates/content.php"
-   //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
+   //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 
 ?>

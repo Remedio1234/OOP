@@ -7,13 +7,18 @@
     if($_POST){
         switch ($_POST['_action']) {
             case 'register':
-                // extract($_POST);
+                extract($_POST);
+                // $apple = array("a" => 1,"b" => 2);
+                // echo $apple["a"];
+                // extract($apple);
+                // echo $a;
                 // $name;
                 // $email;
                 // $password;
-                $name       = $_POST['name'];
-                $email      = $_POST['email']; 
-                $password   = password_hash($_POST['password'], PASSWORD_DEFAULT); 
+                // $name       = $_POST['name'];
+                // $email      = $_POST['email']; 
+                // $password   = password_hash($_POST['password'], PASSWORD_DEFAULT); 
+                $password   = password_hash($password, PASSWORD_DEFAULT);
                 $register   = $dbConn->query("INSERT INTO users (name, email, password) VALUES ('".$name."','".$email."','".$password."')");
                 if($register)
                     $response = [
