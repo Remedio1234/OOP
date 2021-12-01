@@ -49,7 +49,11 @@
             />
             <label>Confirm Password</label>
         </div>
-        
+        <input 
+            type="hidden" 
+            name="_action" 
+            value="register" 
+        />
         <button 
             class="w-100 btn btn-lg btn-primary" 
             type="submit">Register</button>

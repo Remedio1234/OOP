@@ -52,8 +52,16 @@
                 'title' => 'Register',
                 'page'  => 'register'
             ];
-            $local_js   = ['assets/js/jquery.validate.min.js', 'assets/js/register.js'];       
-            $local_css  = ['assets/css/signin.css','assets/css/register.css'];
+            $local_js   = [
+                'assets/js/jquery.validate.min.js', 
+                'assets/js/toastr.js',
+                'assets/js/register.js'
+            ];       
+            $local_css  = [
+                'assets/css/signin.css',
+                'assets/css/toastr.css',
+                'assets/css/register.css'
+            ];
             $file = 'pages/register.php';
         break;
         /** 

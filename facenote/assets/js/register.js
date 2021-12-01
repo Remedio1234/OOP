@@ -5,7 +5,12 @@ $("#frmSubmit").validate({
         },
         email:{
             email: true,
-            required: true
+            required: true,
+            remote: {
+                url: "app/controller/RegisterController.php",
+                type: "post",
+                data: {_action: "check_email"}
+            }
         },
         password:{
             required: true,
@@ -24,6 +29,7 @@ $("#frmSubmit").validate({
         email:{
             email:"Enter a valid email.",
             required:"Email required.",
+            remote: "Email address already exist!"
         },
         password: {
             required: "Password required",
@@ -39,14 +45,48 @@ $("#frmSubmit").validate({
         error.insertAfter(element.parent())
     },
     submitHandler: function(form){
-        alert("submitted")
-        // $.ajax({
-        //     url: form.action,
-        //     type: form.method,
-        //     data: $(form).serialize(),
-        //     success: function(response) {
-        //         $('#answers').html(response);
-        //     }            
-        // });		
+        toastr.options = {
+            "closeButton": true,
+            // "debug": false,
+            // "newestOnTop": false,
+            // "progressBar": true,
+            // "preventDuplicates": true,
+            // "onclick": null,
+            // "showDuration": "100",
+            // "hideDuration": "1000",
+            // "timeOut": "5000",
+            // "extendedTimeOut": "1000",
+            // "showEasing": "swing",
+            // "hideEasing": "linear",
+            // "showMethod": "show",
+            // "hideMethod": "hide"
+        };
+
+        // // for success - green box
+        // toastr.success('Success messages');
+
+        // // for errors - red box
+        // toastr.error('errors messages');
+
+        // // for warning - orange box
+        // toastr.warning('warning messages');
+
+        // // for info - blue box
+        // toastr.info('info messages');
+        
+        $.ajax({
+            url     : "app/controller/RegisterController.php",
+            type    : "post",
+            dataType:"json",
+            data    : $(form).serialize(),
+            success : function(data) {
+                if(data.response == "success"){
+                    $('#frmSubmit').trigger("reset");
+                    toastr.success(data.message, "Message");
+                }
+                else 
+                    toastr.error(data.message, "Message");
+            }            
+        });		
     }
 });
