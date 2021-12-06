@@ -1,8 +1,6 @@
 <?php
     //call database connection
     include "../../config/Database.php";
-    $db         = new Database;
-    $dbConn     = $db->connect();
     $response   = array(); 
     if($_POST){
         switch ($_POST['_action']) {

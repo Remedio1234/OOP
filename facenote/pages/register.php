@@ -1,4 +1,3 @@
-    
 <main class="form-signin">
     <form method="post" id="frmSubmit">
         <img 

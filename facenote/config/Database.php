@@ -1,4 +1,5 @@
 <?php
+    session_start();
     class Database {
         //database connection setup
         protected  $db_host = "mysql:host=localhost;dbname=facenote";
@@ -14,4 +15,6 @@
             } 
         }
     }
+    $db         = new Database;
+    $dbConn     = $db->connect();
 ?>

@@ -29,58 +29,80 @@
     $data       = array();
     
     switch ($page) {
-        /** 
-         * START LOGIN PAGE 
-         * */
-        case 'login':
-            $data = [
-                'title' => 'Login',
-                'page'  => 'login'
-            ];
-            $local_js   = ['assets/js/login.js'];       
-            $local_css  = ['assets/css/signin.css','assets/css/login.css'];
-            $file        = 'pages/login.php';
-        break;
-        /** 
-         * END LOGIN PAGE 
-         * */
-        /** 
-         * REGISTER LOGIN PAGE 
-         * */
-        case 'register':
-            $data = [
-                'title' => 'Register',
-                'page'  => 'register'
-            ];
-            $local_js   = [
-                'assets/js/jquery.validate.min.js', 
-                'assets/js/toastr.js',
-                'assets/js/register.js'
-            ];       
-            $local_css  = [
-                'assets/css/signin.css',
-                'assets/css/toastr.css',
-                'assets/css/register.css'
-            ];
-            $file = 'pages/register.php';
-        break;
-        /** 
-         * END REGISTER PAGE 
-         * */
-        /** 
-         * START HOME PAGE 
-         * */
-        default:
-            $data = array(
-                'title' => 'HomePage',
-                'page'  => 'home'
-            );
-            $local_css  = array();
-            $file       = 'pages/home.php';
-        break;
-        /** 
-         * END HOME PAGE 
-         * */
+    /**
+     * START LOGOUT
+     */
+    case 'logout':
+        session_destroy();
+        header("location:index.php");
+    break;    
+    /** 
+     * END LOGOUT 
+     * */
+    /** 
+     * START LOGIN PAGE 
+     * */
+    case 'login':
+        if(isset($_SESSION['user']) && $_SESSION['user']['isLoggedIn'])
+            header("location:index.php");
+
+        $data = [
+            'title' => 'Login',
+            'page'  => 'login'
+        ];
+        $local_js   = [
+            'assets/js/jquery.validate.min.js', 
+            'assets/js/toastr.js',
+            'assets/js/login.js'];       
+        $local_css  = [
+                    'assets/css/signin.css',
+                    'assets/css/toastr.css',
+                    'assets/css/login.css'];
+        $file        = 'pages/login.php';
+    break;
+    /** 
+     * END LOGIN PAGE 
+     * */
+    /** 
+     * REGISTER LOGIN PAGE 
+     * */
+    case 'register':
+        if(isset($_SESSION['user']) && $_SESSION['user']['isLoggedIn'])
+            header("location:index.php");
+            
+        $data = [
+            'title' => 'Register',
+            'page'  => 'register'
+        ];
+        $local_js   = [
+            'assets/js/jquery.validate.min.js', 
+            'assets/js/toastr.js',
+            'assets/js/register.js'
+        ];       
+        $local_css  = [
+            'assets/css/signin.css',
+            'assets/css/toastr.css',
+            'assets/css/register.css'
+        ];
+        $file = 'pages/register.php';
+    break;
+    /** 
+     * END REGISTER PAGE 
+     * */
+    /** 
+     * START HOME PAGE 
+     * */
+    default:
+        $data = array(
+            'title' => 'HomePage',
+            'page'  => 'home'
+        );
+        $local_css  = array();
+        $file       = 'pages/home.php';
+    break;
+    /** 
+     * END HOME PAGE 
+     * */
    }
    /**
     * merge js and css both global and local variable
@@ -92,4 +114,7 @@
     */
    include "templates/content.php"
    //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 
+
+//    https://www.php.net/manual/en/language.oop5.autoload.php
+// spl classess autoloading
 ?>
